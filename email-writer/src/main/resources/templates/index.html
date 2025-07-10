@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Reply Generator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm rounded-4">
+          <div class="card-body">
+            <h4 class="card-title mb-3 text-center">Email Reply Generator</h4>
+
+            <form action="/generate" method="post">
+              <div class="mb-3">
+                <label for="emailContent" class="form-label">Original Email</label>
+                <textarea class="form-control form-control-sm" id="emailContent" name="emailContent" rows="6" required
+                          th:text="${emailRequest.emailContent}"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="tone" class="form-label">Tone</label>
+                <select class="form-select form-select-sm" id="tone" name="tone" th:value="${emailRequest.tone}">
+                  <option value="">-- Select tone (optional) --</option>
+                  <option value="polite">Polite</option>
+                  <option value="formal">Formal</option>
+                  <option value="casual">Casual</option>
+                  <option value="friendly">Friendly</option>
+                  <option value="professional">Professional</option>
+                  <option value="Rude">Rude</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="language" class="form-label">Language</label>
+                <select class="form-select form-select-sm" id="language" name="language" required
+                        th:value="${emailRequest.language}">
+                  <option value="">-- Select language --</option>
+                  <option value="English">English</option>
+                  <option value="Hindi">Hindi</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="French">French</option>
+                  <option value="German">German</option>
+                </select>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary btn-sm px-4">Generate</button>
+                <a href="/" class="btn btn-secondary btn-sm px-4">Reset</a>
+              </div>
+            </form>
+
+            <div class="mt-4" th:if="${response}">
+              <h6>Generated Reply:</h6>
+              <pre class="bg-light border rounded p-2" th:text="${response}"></pre>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
