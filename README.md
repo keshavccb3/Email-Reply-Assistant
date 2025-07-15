@@ -16,7 +16,7 @@ Welcome to the **Email Reply Assistant** – a smart and simple tool that helps 
 ## 🛠️ Tech Stack
 
 - **Backend**: Java, Spring Boot
-- **Frontend**: Thymeleaf, Bootstrap, HTML/CSS
+- **Frontend**: Thymeleaf, Bootstrap
 - **Build Tool**: Maven
 
 ---
